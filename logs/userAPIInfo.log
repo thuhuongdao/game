@@ -1,0 +1,6 @@
+2022-12-10 11:40:51 - [main](Xerver:28) -     java.lang.NumberFormatException: For input string: "a"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at helitech.Xerver.main(Xerver.java:23)
+

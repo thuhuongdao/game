@@ -10,9 +10,7 @@
         </layout>
     </appender>
 
-    <logger name="console">
-        <appender-ref ref="console" />
-    </logger>
+
 
 
     <appender class="org.apache.log4j.RollingFileAppender" name="DEBUG">
@@ -30,8 +28,65 @@
         </filter>
         <filter class="org.apache.log4j.varia.DenyAllFilter"/>
     </appender>
+    <appender name="INFO" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="logs/info.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} - [%M](%C{1}:%L) - %m%n"/>
+        </layout>
+
+        <filter class="org.apache.log4j.varia.LevelMatchFilter">
+            <param name="LevelToMatch" value="INFO"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+        <filter class="org.apache.log4j.varia.DenyAllFilter"></filter>
+    </appender>
+
     <logger name="BEM">
+        <appender-ref ref="console" />
         <appender-ref ref="DEBUG"/>
+        <appender-ref ref="INFO"/>
+
+    </logger>
+    <appender class="org.apache.log4j.RollingFileAppender" name="USER_API_INFO">
+        <param name="File" value="logs/userAPIInfo.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} - [%M](%C{1}:%L) -
+				%m%n"/>
+        </layout>
+
+        <filter class="org.apache.log4j.varia.LevelMatchFilter">
+            <param name="LevelToMatch" value="INFO"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+    </appender>
+
+    <appender class="org.apache.log4j.RollingFileAppender" name="USER_API_ERROR">
+        <param name="File" value="logs/userAPIError.log"/>
+        <param name="Append" value="true"/>
+        <param name="MaxFileSize" value="10MB"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} - [%M](%C{1}:%L) -
+				%m%n"/>
+        </layout>
+
+        <filter class="org.apache.log4j.varia.LevelMatchFilter">
+            <param name="LevelToMatch" value="ERROR"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+        <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+    </appender>
+
+    <logger name="USER_API">
+        <appender-ref ref="USER_API_INFO"/>
+        <appender-ref ref="USER_API_ERROR"/>
     </logger>
 
     <appender class="org.apache.log4j.DailyRollingFileAppender" name="LOGIN_INFO">

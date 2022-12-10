@@ -1,6 +1,10 @@
 package helitech;
 
 import helitech.common.slib_Properties;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 
 public class Config {
     /**
@@ -14,8 +18,9 @@ public class Config {
      *            full path of configuration file
      * @throws Exception
      */
-    public static void load(Object aSource){
+    public static void load(Object aSource) throws ParserConfigurationException, IOException, SAXException {
         String filename = (String) aSource;
         mProps = new slib_Properties(filename);
+
     }
 }
