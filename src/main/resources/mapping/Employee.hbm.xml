@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="helitech.dao.mapping.Employee" table="employee" catalog="myra">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="native"/>
+        </id>
+        <property name="firstName" type="string">
+            <column length="50" name="first_name" />
+        </property>
+        <property name="lastName" type="string">
+            <column length="50" name="last_name" />
+        </property>
+        <property name="birthday" type="date">
+            <column length="50" name="birthday" />
+        </property>
+        <property name="salary" type="int">
+            <column name="salary" />
+        </property>
+    </class>
+</hibernate-mapping>
